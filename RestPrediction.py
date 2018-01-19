@@ -44,7 +44,7 @@ def inverse_difference(history, yhat, interval=1):
 	return yhat + history
     
 def predict_alert(data):
-    clf=pickle.load(open("clf","rb"))
+    clf=cPickle.load(open("clf","rb"))
     y_pred=clf.predict(data)
     if np.array(y_pred[0]) == 0 :
         return 1
