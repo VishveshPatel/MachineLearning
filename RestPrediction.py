@@ -1,5 +1,5 @@
 import pandas as pd
-import pickle
+import cPickle
 from keras.models import load_model
 import numpy as np
 from flask import Flask,request,jsonify
@@ -77,7 +77,7 @@ def retrain(data):
     Y = Y.values.reshape(-1,1)
     clf = sklearn.linear_model.LogisticRegressionCV()
     clf.fit(X,Y)
-    pickle.dump(clf,open("clf","wb"))
+    cPickle.dump(clf,open("clf","wb"))
     print("#"*33,"Retraining completed","#"*33)
 
     return 0
@@ -117,7 +117,7 @@ def predict_data(raw_data):
     
 raw_data=120
 lstm_model = load_model('my_model.h5')
-scaler=pickle.load(open("scaler","rb"))
+scaler=cPickle.load(open("scaler","rb"))
 prev=raw_data
 trigger_value=0
 trigger_count=0
