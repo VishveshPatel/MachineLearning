@@ -3,7 +3,7 @@ import pickle
 from keras.models import load_model
 import numpy as np
 from flask import Flask,request,jsonify
-from matplotlib import pyplot
+#from matplotlib import pyplot
 
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error
@@ -95,8 +95,8 @@ def predict_data(raw_data):
     yhat = lstm_model.predict(X,1)
     yhat=inverse_scale(scaler,X,yhat)
     yhat=inverse_difference(raw_data,yhat,1)
-    print("Current Value is:",raw_data,end=' ')
-    print("Naxt value could be ",yhat, end=' ')
+    print("Current Value is:",raw_data)
+    print("Naxt value could be ",yhat)
     predict_alert(yhat)
     num_list.append(raw_data)
 
