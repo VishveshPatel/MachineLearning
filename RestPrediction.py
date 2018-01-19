@@ -1,6 +1,6 @@
 import pandas as pd
-#import _pickle as cPickle
-import six.moves as cPickle
+import pickle 
+#import six.moves as cPickle
 from keras.models import load_model
 import numpy as np
 from flask import Flask,request,jsonify
@@ -45,7 +45,7 @@ def inverse_difference(history, yhat, interval=1):
 	return yhat + history
     
 def predict_alert(data):
-    clf=cPickle.load(open("clf","rb"))
+    clf=pickle.load(open("clf","rb"))
     y_pred=clf.predict(data)
     if np.array(y_pred[0]) == 0 :
         return 1
@@ -78,7 +78,7 @@ def retrain(data):
     Y = Y.values.reshape(-1,1)
     clf = sklearn.linear_model.LogisticRegressionCV()
     clf.fit(X,Y)
-    cPickle.dump(clf,open("clf","wb"))
+    pickle.dump(clf,open("clf","wb"))
     print("#"*33,"Retraining completed","#"*33)
 
     return 0
@@ -118,7 +118,7 @@ def predict_data(raw_data):
     
 raw_data=120
 lstm_model = load_model('my_model.h5')
-scaler=cPickle.load(open("scaler","rb"))
+scaler=pickle.load(open("scaler","rb"))
 prev=raw_data
 trigger_value=0
 trigger_count=0
