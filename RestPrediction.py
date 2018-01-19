@@ -1,5 +1,6 @@
 import pandas as pd
-import _pickle as cPickle
+#import _pickle as cPickle
+import six.moves as cPickle
 from keras.models import load_model
 import numpy as np
 from flask import Flask,request,jsonify
