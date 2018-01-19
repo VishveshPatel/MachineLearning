@@ -1,5 +1,5 @@
 import pandas as pd
-import cPickle
+import _pickle as cPickle
 from keras.models import load_model
 import numpy as np
 from flask import Flask,request,jsonify
