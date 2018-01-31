@@ -88,7 +88,8 @@ def predict_the_causes():
     
         ## Display Result
         pred=list(y_pred[0])
-        pred1=pred.copy()
+        pred1=[]
+        pred1[:]=pred
         out_list=[]
         print("Output: \n")
         for i in range(0,2):
