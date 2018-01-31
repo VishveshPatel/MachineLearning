@@ -91,7 +91,7 @@ def predict_the_causes():
         pred1=[]
         pred1[:]=pred
         out_list=[]
-        out_list=[]
+        
         print("Output: \n")
         for i in range(0,2):
             max_val=max(pred1)
