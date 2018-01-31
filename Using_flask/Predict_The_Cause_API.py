@@ -34,20 +34,16 @@ def get_input_data(s1):
     d1=datetime.datetime.strptime(s1, '%Y-%m-%d %H:%M:%S')
     d1=d1-timedelta(seconds=10)
     s1=str(d1)
-    ## get the difference and index
-    index=int(equal(s1,test_data.iloc[0,0])/10)
-    diff=equal(s1,test_data.iloc[index,0])
-
-    if diff != 0:
-        for i in range(test_data.shape[0]):
-            diff=equal(s1,test_data.iloc[i,0])
-            if diff == 0:
-                index=i
-                break
-
+    index=0
+    for i in range(test_data.shape[0]):
+        diff=equal(s1,test_data.iloc[i,0])
+        if diff <= 10:
+            index=i
+            break
     ## Get last 100 data
     input_data=test_data.iloc[index-99:index+1,1]
     return input_data
+
 
 #
 #@app.route('/Get_Data',methods = ['POST'])
